@@ -31,12 +31,12 @@ fun main() {
     println("q = $q")
     val n = p * q
     println("n = $n")
-    val figh = (p - "1".toBigInteger()) * (q - "1".toBigInteger())
+    val figh = (p - 1.toBigInteger()) * (q - 1.toBigInteger())
     println("φ = $figh")
     val e = getBiggestPrime(figh).nextProbablePrime()
     println("e = $e")
     val d = exGcd(e to figh).first.let {
-        if (it >= "0".toBigInteger()) {
+        if (it >= 0.toBigInteger()) {
             it
         } else {
             it + figh
@@ -48,8 +48,8 @@ fun main() {
 }
 
 fun exGcd(pair: Pair<BigInteger, BigInteger>): Pair<BigInteger, BigInteger> {
-    if (pair.second == "0".toBigInteger()) {
-        return "1".toBigInteger() to "0".toBigInteger()
+    if (pair.second == 0.toBigInteger()) {
+        return 1.toBigInteger() to 0.toBigInteger()
     } else {
         val q = pair.first / pair.second
         val r = pair.first % pair.second
@@ -64,12 +64,12 @@ fun getBiggestPrime(a: BigInteger): BigInteger {
     return if (a.isProbablePrime(10)) {
         a
     } else {
-        getBiggestPrime(a, "2".toBigInteger())
+        getBiggestPrime(a, 2.toBigInteger())
     }
 }
 
 fun getBiggestPrime(a: BigInteger, b: BigInteger): BigInteger{
-    return if (a % b == "0".toBigInteger()) {
+    return if (a % b == 0.toBigInteger()) {
         if (a == b) {
             a
         } else {
